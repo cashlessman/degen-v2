@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback, useState, useMemo } from "react";
+import { useEffect, useCallback, useState } from "react";
 import sdk, {
   FrameNotificationDetails,
   type FrameContext,
@@ -8,19 +8,22 @@ import sdk, {
 
 
 import { Button } from "~/components/ui/Button";
-import { base, optimism } from "wagmi/chains";
 
 
 export default function Demo(
-  { title }: { title?: string } = { title: "Frames v2 Demo" }
+  { title }: { title?: string } = { title: "demo title" }
 ) {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [context, setContext] = useState<FrameContext>();
 
   const [addFrameResult, setAddFrameResult] = useState("");
+
+  // const [addFrameResult, setAddFrameResult] = useState("");
   const [notificationDetails, setNotificationDetails] =
     useState<FrameNotificationDetails | null>(null);
-  const [sendNotificationResult, setSendNotificationResult] = useState("");
+  // const [sendNotificationResult, setSendNotificationResult] = useState("");
+  const [setSendNotificationResult] = useState("");
+
 
   useEffect(() => {
     setNotificationDetails(context?.client.notificationDetails ?? null);
@@ -41,13 +44,6 @@ export default function Demo(
   const openUrl = useCallback(() => {
     sdk.actions.openUrl("https://warpcast.com/cashlessman.eth");
   }, []);
-////////////////////////
-  const shareText = encodeURIComponent(
-    `Track Your $DEGEN stats \n \nV2 frame by @cashlessman.eth`
-);
-const shareUrl = `https://warpcast.com/~/compose?text=${shareText}&embeds[]=https://followers-count.vercel.app/frames`;
-
-////////////////////////////////
 
   const openWarpcastUrl = useCallback(() => {
     sdk.actions.openUrl(shareUrl);
@@ -83,43 +79,45 @@ const shareUrl = `https://warpcast.com/~/compose?text=${shareText}&embeds[]=http
       setAddFrameResult(`Error: ${error}`);
     }
   }, []);
+////////////////////////////////
+  // const sendNotification = useCallback(async () => {
+  //   setSendNotificationResult("");
+  //   if (!notificationDetails || !context) {
+  //     return;
+  //   }
 
-  const sendNotification = useCallback(async () => {
-    setSendNotificationResult("");
-    if (!notificationDetails || !context) {
-      return;
-    }
+  //   try {
+  //     const response = await fetch("/api/send-notification", {
+  //       method: "POST",
+  //       mode: "same-origin",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         fid: context.user.fid,
+  //         notificationDetails,
+  //       }),
+  //     });
 
-    try {
-      const response = await fetch("/api/send-notification", {
-        method: "POST",
-        mode: "same-origin",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fid: context.user.fid,
-          notificationDetails,
-        }),
-      });
+  //     if (response.status === 200) {
+  //       setSendNotificationResult("Success");
+  //       return;
+  //     } else if (response.status === 429) {
+  //       setSendNotificationResult("Rate limited");
+  //       return;
+  //     }
 
-      if (response.status === 200) {
-        setSendNotificationResult("Success");
-        return;
-      } else if (response.status === 429) {
-        setSendNotificationResult("Rate limited");
-        return;
-      }
+  //     const data = await response.text();
+  //     setSendNotificationResult(`Error: ${data}`);
+  //   } catch (error) {
+  //     setSendNotificationResult(`Error: ${error}`);
+  //   }
+  // }, [context, notificationDetails]);
+  ////////////////////////////////////////////////////////////////
 
-      const data = await response.text();
-      setSendNotificationResult(`Error: ${data}`);
-    } catch (error) {
-      setSendNotificationResult(`Error: ${error}`);
-    }
-  }, [context, notificationDetails]);
+  const shareText = encodeURIComponent(
+    `Track Your $DEGEN stats \n \nV2 frame by @cashlessman.eth`
+);
+const shareUrl = `https://warpcast.com/~/compose?text=${shareText}&embeds[]=https://followers-count.vercel.app/frames`;
 
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
 interface allowancesData {
   snapshot_day: string;
   user_rank: string;
@@ -144,8 +142,6 @@ const Degen = useCallback(async (fid: string) => {
     }
 
     const responseData = await aroundResponse.json();
-
-    // Ensure the response matches the expected structure
     if (
       responseData &&
       Array.isArray(responseData.allowancesData) &&
@@ -187,6 +183,8 @@ const formatSnapshotDay = (dateString: string) => {
   return (
 <div className="w-auto bg-slate-900 text-white h-screen">
 <div className="w-auto bg-slate-900 text-white">
+<h1 className="text-2xl font-bold text-center mb-4">{title}</h1>
+
   <header className="bg-slate-800 text-white py-4">
     <div className="container mx-auto px-4 text-center">
       <h1 className="text-2xl font-bold text-sky-400">$DEGEN Allowance Tracker</h1>
@@ -235,16 +233,16 @@ const formatSnapshotDay = (dateString: string) => {
 
   <div>
     {/* Placeholder for future functionality */}
-    {/* <div className="mt-2 mb-4 text-sm">
+    <div className="mt-2 mb-4 text-sm">
       Client fid {context?.client.clientFid},
       {context?.client.added ? " frame added to client," : " frame not added to client,"}
       {notificationDetails ? " notifications enabled" : " notifications disabled"}
-    </div> */}
+    </div>
 
     <div className="mt-0">
-      {/* <div className="mb-2 text-sm">
+      <div className="mb-2 text-sm">
         Add frame result: {addFrameResult}
-      </div> */}
+      </div>
     </div>
 
     {/* <div className="mb-2 text-sm">
