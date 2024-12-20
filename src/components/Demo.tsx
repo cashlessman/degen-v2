@@ -22,7 +22,7 @@ export default function Demo(
   const [notificationDetails, setNotificationDetails] =
     useState<FrameNotificationDetails | null>(null);
   // const [sendNotificationResult, setSendNotificationResult] = useState("");
-  const [setSendNotificationResult] = useState("");
+  // const [setSendNotificationResult] = useState("");
 
 
   useEffect(() => {
@@ -169,7 +169,7 @@ useEffect(() => {
   }
 }, [context?.user.fid]);
 
-let currentDate = new Date().toISOString().split("T")[0]; // Use current date
+const currentDate = new Date().toISOString().split("T")[0]; // Use current date
 const formatSnapshotDay = (dateString: string) => {
   const date = new Date(dateString);
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
