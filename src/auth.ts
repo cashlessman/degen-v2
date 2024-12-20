@@ -1,7 +1,8 @@
-import { AuthOptions, getServerSession } from "next-auth"
+import { AuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { createAppClient, viemConnector } from "@farcaster/auth-client";
 
+// Extend the Session interface to include custom properties
 declare module "next-auth" {
   interface Session {
     user: {
@@ -11,7 +12,10 @@ declare module "next-auth" {
 }
 
 export const authOptions: AuthOptions = {
-    // Configure one or more authentication providers
+  // Add a secret for signing tokens in production
+  secret: process.env.NEXTAUTH_SECRET,
+
+  // Configure authentication providers
   providers: [
     CredentialsProvider({
       name: "Sign in with Farcaster",
@@ -19,29 +23,27 @@ export const authOptions: AuthOptions = {
         message: {
           label: "Message",
           type: "text",
-          placeholder: "0x0",
+          placeholder: "Enter the message",
         },
         signature: {
           label: "Signature",
           type: "text",
-          placeholder: "0x0",
+          placeholder: "Enter the signature",
         },
-        // In a production app with a server, these should be fetched from
-        // your Farcaster data indexer rather than have them accepted as part
-        // of credentials.
         name: {
           label: "Name",
           type: "text",
-          placeholder: "0x0",
+          placeholder: "Enter your name",
         },
         pfp: {
-          label: "Pfp",
+          label: "PFP",
           type: "text",
-          placeholder: "0x0",
+          placeholder: "Enter your profile picture URL",
         },
       },
       async authorize(credentials, req) {
         const csrfToken = req?.body?.csrfToken;
+
         const appClient = createAppClient({
           ethereum: viemConnector(),
         });
@@ -49,29 +51,34 @@ export const authOptions: AuthOptions = {
         const verifyResponse = await appClient.verifySignInMessage({
           message: credentials?.message as string,
           signature: credentials?.signature as `0x${string}`,
-          domain: new URL(process.env.NEXTAUTH_URL ?? '').hostname,
+          domain: new URL(process.env.NEXTAUTH_URL || "").hostname,
           nonce: csrfToken,
         });
+
         const { success, fid } = verifyResponse;
 
         if (!success) {
           return null;
         }
 
+        // Return the user object with the `fid` for session management
         return {
           id: fid.toString(),
         };
       },
     }),
   ],
+
+  // Callbacks for customizing session behavior
   callbacks: {
-    session: async ({ session, token }) => {
+    async session({ session, token }) {
       if (session?.user) {
-        session.user.fid = parseInt(token.sub ?? '');
+        session.user.fid = parseInt(token.sub || "");
       }
       return session;
     },
-  }
-}
+  },
+};
 
-export const getSession = () => getServerSession(authOptions)
+// Helper function to retrieve the session server-side
+export const getSession = () => getServerSession(authOptions);
