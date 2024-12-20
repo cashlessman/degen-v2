@@ -13,6 +13,7 @@ declare module "next-auth" {
 
 export const authOptions: AuthOptions = {
   // Add a secret for signing tokens in production
+  //testing
   secret: process.env.NEXTAUTH_SECRET,
 
   // Configure authentication providers
