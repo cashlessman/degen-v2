@@ -13,8 +13,6 @@ export default async function Image() {
     (
       <div tw="h-full w-full flex flex-col justify-center items-center relative bg-white">
         <h1 tw="text-3xl">$DEGEN stats by @cashlessman.eth</h1>
-        <h1 tw="text-3xl">by @cashlessman.eth</h1>
-
       </div>
     ),
     {

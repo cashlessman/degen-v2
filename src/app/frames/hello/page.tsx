@@ -13,7 +13,7 @@ const frame = {
       name: "hehe",
       url: `${appUrl}/frames/hello/`,
       splashImageUrl: `https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/pfp.png`,
-      splashBackgroundColor: "#f7f7f7",
+      splashBackgroundColor: "#333333",
     },
   },
 };
