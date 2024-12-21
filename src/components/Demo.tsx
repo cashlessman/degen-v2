@@ -273,12 +273,12 @@ const formatSnapshotDay = (dateString: string) => {
 
     {/* <div className="mb-2 text-sm">
       Send notification result: {sendNotificationResult}
-    </div>
-    <div className="mb-4">
-      <Button onClick={sendNotification} disabled={!notificationDetails}>
+    </div> */}
+    <div className="mb-4 hidden">
+      <Button disabled={!notificationDetails}>
         Send notification
       </Button>
-    </div> */}
+    </div>
     <div className="flex flex-row justify-self-center w-full">
 
     {/* <div className="bg-[#8B5CF6] p-3 py-0 text-center mt-4 text-base/6 font-semibold flex-1">
@@ -297,6 +297,9 @@ const formatSnapshotDay = (dateString: string) => {
     >
       Close Frame
     </div>
+    <div className="hidden">{addFrameResult} </div>
+    <div className="hidden">{addFrameResult} </div>
+
     </div>
   </div>
 </div>
