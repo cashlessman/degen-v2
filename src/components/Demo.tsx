@@ -8,6 +8,8 @@ import sdk, {
 
 
 import { Button } from "~/components/ui/Button";
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Demo(
   { title }: { title?: string } = { title: "demo title" }
@@ -179,6 +181,33 @@ const formatSnapshotDay = (dateString: string) => {
     return <div>Loading...</div>;
   }
   
+  if (!context?.user.fid)
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-900">
+      <div className="flex flex-col items-center justify-center text-white text-2xl p-4">
+        <p className="flex items-center justify-center text-center">
+          you need to access this frame from inside a farcaster client
+        </p>
+        <p className="flex items-center justify-center text-center">
+          (click on the logo to open in Warpcast)
+        </p>
+    
+        <div className="flex items-center justify-center p-2 bg-white rounded-lg mt-4">
+          <Link href="https://warpcast.com/cashlessman.eth/0x24ae126c" className="shadow-lg shadow-white">
+            <Image
+              src="https://warpcast.com/og-logo.png"
+              alt="warpcast logo"
+              width={100}
+              height={100}
+            />
+          </Link>
+        </div>
+      </div>
+    </div>
+    
+    );
+
+
   return (
 <div className="w-auto bg-slate-900 text-white h-screen">
 <div className="w-auto bg-slate-900 text-white">
