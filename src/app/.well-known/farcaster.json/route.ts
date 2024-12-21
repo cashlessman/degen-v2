@@ -35,8 +35,8 @@ export async function GET() {
     version: "1",
     name: "$DEGEN STATS",
     iconUrl: "https://degen-v2.vercel.app/icon.png",
-    homeUrl: "https://degen-v2.vercel.app",
-    imageUrl: "https://degen-v2.vercel.app/image.png",
+    homeUrl: appUrl,
+    imageUrl: "https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/degen.png",
     buttonTitle: "SEE",
     splashImageUrl: `https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/pfp.png`,
 
