@@ -9,7 +9,6 @@ import sdk, {
 
 import { Button } from "~/components/ui/Button";
 
-
 export default function Demo(
   { title }: { title?: string } = { title: "demo title" }
 ) {
