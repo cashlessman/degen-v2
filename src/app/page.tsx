@@ -19,9 +19,9 @@ const appUrl = process.env.NEXT_PUBLIC_URL;
 // };
 const frame = {
   version: "next",
-imageUrl: `https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/banner2.png`,  
+imageUrl: `https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/degen.png`,  
   button: {
-    title: "SEE",
+    title: "Check Your $DEGEN Stats",
     action: {
       type: "launch_frame",
       name: "$DEGEN STATS",

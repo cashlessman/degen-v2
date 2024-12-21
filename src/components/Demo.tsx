@@ -12,7 +12,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Demo(
-  { title }: { title?: string } = { title: "demo title" }
+  // { title }: { title?: string } = { title: "demo title" }
 ) {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [context, setContext] = useState<FrameContext>();
@@ -211,17 +211,15 @@ const formatSnapshotDay = (dateString: string) => {
   return (
 <div className="w-auto bg-slate-900 text-white h-screen">
 <div className="w-auto bg-slate-900 text-white">
-<h1 className="text-2xl font-bold text-center mb-4">{title}</h1>
+{/* <h1 className="text-2xl font-bold text-center mb-4">{title}</h1> */}
 
-  <header className="bg-slate-800 text-white py-4">
-    <div className="container mx-auto px-4 text-center">
-      <h1 className="text-2xl font-bold text-sky-400">$DEGEN Allowance Tracker</h1>
-    </div>
+  <header className="bg-slate-800 text-white py-3">
+      <h1 className="text-2xl font-bold text-sky-400 text-center">$DEGEN Stats</h1>
   </header>
 
-  <div className="bg-[#0206178c] text-white text-center relative p-2">
-    Frame By @Cashlessman.eth
-  </div>
+  <div className="bg-[#0206178c] relative p-2">  </div>
+ 
+
 
   <Stats />
 
@@ -261,17 +259,17 @@ const formatSnapshotDay = (dateString: string) => {
 
   <div>
     {/* Placeholder for future functionality */}
-    <div className="mt-2 mb-4 text-sm">
+    {/* <div className="mt-2 mb-4 text-sm">
       Client fid {context?.client.clientFid},
       {context?.client.added ? " frame added to client," : " frame not added to client,"}
       {notificationDetails ? " notifications enabled" : " notifications disabled"}
-    </div>
+    </div> */}
 
-    <div className="mt-0">
+    {/* <div className="mt-0">
       <div className="mb-2 text-sm">
         Add frame result: {addFrameResult}
       </div>
-    </div>
+    </div> */}
 
     {/* <div className="mb-2 text-sm">
       Send notification result: {sendNotificationResult}
@@ -283,7 +281,7 @@ const formatSnapshotDay = (dateString: string) => {
     </div> */}
     <div className="flex flex-row justify-self-center w-full">
 
-    <div className="bg-[#8B5CF6] p-3 py-0 text-center mt-4 text-base/6 font-semibold flex-1">
+    {/* <div className="bg-[#8B5CF6] p-3 py-0 text-center mt-4 text-base/6 font-semibold flex-1">
       <Button
         className="p-0 m-0 border-none bg-transparent"
         onClick={addFrame}
@@ -291,10 +289,10 @@ const formatSnapshotDay = (dateString: string) => {
       >
         Add frame
       </Button>
-    </div>
+    </div> */}
 
     <div
-      className="bg-[#8B5CF6] p-3 ml-2 text-center mt-4 text-base/6 font-semibold flex-1"
+      className="bg-[#8B5CF6] p-3 text-center mt-4 text-base/6 font-semibold flex-1"
       onClick={close}
     >
       Close Frame
@@ -367,7 +365,9 @@ const formatSnapshotDay = (dateString: string) => {
   function Table( ) {
     return (
       <div className="bg-[#1E293B] p-3">
-      <table className="table-auto w-auto bg-slate-700 text-lime-400 text-center">
+              <h1 className="text-2xl font-bold text-sky-400 text-center">Allowance Tracker</h1>
+
+      <table className="table-auto w-auto bg-slate-700 text-lime-400 text-center mt-3">
       <thead className="sticky top-0 bg-slate-700">
           <tr className="text-white text-violet-400 border-b border-lime-400">
             <th className="px-4 py-2 min-w-[80px]">Date</th>
@@ -498,6 +498,12 @@ const formatSnapshotDay = (dateString: string) => {
             <td className="px-4 py-2">{data?.data[19]?.user_rank ?? "N/A"}</td>
             <td className="px-4 py-2">{data?.data[19]?.tip_allowance ?? "N/A"}</td>
             <td className="px-4 py-2">{data?.data[19]?.remaining_tip_allowance ?? "N/A"}</td>
+          </tr>
+          <tr className="odd:bg-slate-700 even:bg-slate-600">
+            <td className="px-4 py-2">{formatSnapshotDay(data?.data[20]?.snapshot_day ?? "N/A")}</td>
+            <td className="px-4 py-2">{data?.data[20]?.user_rank ?? "N/A"}</td>
+            <td className="px-4 py-2">{data?.data[20]?.tip_allowance ?? "N/A"}</td>
+            <td className="px-4 py-2">{data?.data[20]?.remaining_tip_allowance ?? "N/A"}</td>
           </tr>
 
         </tbody>

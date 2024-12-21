@@ -33,8 +33,8 @@ export async function GET() {
   },
   frame: {
     version: "1",
-    name: "$DEGEN STATS",
-    iconUrl: "https://degen-v2.vercel.app/icon.png",
+    name: "DEGEN",
+    iconUrl: "https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/degen_logo.png",
     homeUrl: appUrl,
     imageUrl: "https://raw.githubusercontent.com/cashlessman/images/refs/heads/main/degen.png",
     buttonTitle: "SEE",
