@@ -281,7 +281,7 @@ const formatSnapshotDay = (dateString: string) => {
     </div>
     <div className="flex flex-row justify-self-center w-full">
 
-    {/* <div className="bg-[#8B5CF6] p-3 py-0 text-center mt-4 text-base/6 font-semibold flex-1">
+    <div className="bg-[#8B5CF6] p-3 py-0 text-center mt-4 text-base/6 font-semibold flex-1 hidden">
       <Button
         className="p-0 m-0 border-none bg-transparent"
         onClick={addFrame}
@@ -289,7 +289,7 @@ const formatSnapshotDay = (dateString: string) => {
       >
         Add frame
       </Button>
-    </div> */}
+    </div>
 
     <div
       className="bg-[#8B5CF6] p-3 text-center mt-4 text-base/6 font-semibold flex-1"
@@ -297,7 +297,6 @@ const formatSnapshotDay = (dateString: string) => {
     >
       Close Frame
     </div>
-    <div className="hidden">{addFrameResult} </div>
     <div className="hidden">{addFrameResult} </div>
 
     </div>
