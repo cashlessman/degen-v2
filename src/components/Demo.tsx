@@ -51,7 +51,7 @@ export default function Demo(
   }, []);
 
   const tip = useCallback(() => {
-    sdk.actions.openUrl("https://warpcast.com/~/compose");
+    sdk.actions.openUrl(tipUrl);
   }, []);
 
   const close = useCallback(() => {
@@ -114,11 +114,6 @@ export default function Demo(
   // }, [context, notificationDetails]);
   ////////////////////////////////////////////////////////////////
 
-  const shareText = encodeURIComponent(
-    `Track Your $DEGEN stats \n \nV2 frame by @cashlessman.eth`
-);
-const shareUrl = `https://warpcast.com/~/compose?text=${shareText}&embeds[]=https://followers-count.vercel.app/frames`;
-
 interface allowancesData {
   snapshot_day: string;
   user_rank: string;
@@ -177,6 +172,16 @@ const formatSnapshotDay = (dateString: string) => {
   const day = date.getDate().toString().padStart(2, '0');
   return `${day}-${month}`;
 };
+
+const shareText = encodeURIComponent(
+  `$DEGEN stats \n \nV2 frame by @cashlessman.eth`
+);
+
+const tiped =  encodeURIComponent(
+``
+);
+const shareUrl = `https://warpcast.com/~/compose?text=${shareText}&embeds[]=https://degen-v2.vercel.app/`;
+const tipUrl = `https://warpcast.com/~/compose?text=${tiped}&parentCastHash=0xefeba64cabdcfbc619b7d6003f993f460e3a6cef`;
   if (!isSDKLoaded) {
     return <div>Loading...</div>;
   }
@@ -193,7 +198,7 @@ const formatSnapshotDay = (dateString: string) => {
         </p>
     
         <div className="flex items-center justify-center p-2 bg-white rounded-lg mt-4">
-          <Link href="https://warpcast.com/cashlessman.eth/0x24ae126c" className="shadow-lg shadow-white">
+          <Link href="https://warpcast.com/cashlessman.eth/0xefeba64c" className="shadow-lg shadow-white">
             <Image
               src="https://warpcast.com/og-logo.png"
               alt="warpcast logo"
