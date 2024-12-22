@@ -511,6 +511,86 @@ const tipUrl = `https://warpcast.com/~/compose?text=${tiped}&parentCastHash=0xef
             <td className="px-4 py-2">{data?.data[20]?.tip_allowance ?? "N/A"}</td>
             <td className="px-4 py-2">{data?.data[20]?.remaining_tip_allowance ?? "N/A"}</td>
           </tr>
+          {Array.isArray(data?.data) && data?.data.length ===29
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[21]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[21]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[21]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[21]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===30
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[22]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[22]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[22]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[22]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===31
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[23]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[23]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[23]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[23]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===32
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[24]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[24]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[24]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[24]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===33
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[25]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[25]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[25]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[25]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===34
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[26]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[26]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[26]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[26]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===35
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[27]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[27]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[27]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[27]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===36
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[28]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[28]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[28]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[28]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===37
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[29]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[29]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[29]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[29]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
+            {Array.isArray(data?.data) && data?.data.length ===38
+  ?           <tr className="odd:bg-slate-700 even:bg-slate-600">
+  <td className="px-4 py-2">{formatSnapshotDay(data?.data[30]?.snapshot_day ?? "N/A")}</td>
+  <td className="px-4 py-2">{data?.data[30]?.user_rank ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[30]?.tip_allowance ?? "N/A"}</td>
+  <td className="px-4 py-2">{data?.data[30]?.remaining_tip_allowance ?? "N/A"}</td>
+</tr>
+  : ""}
 
         </tbody>
       </table>

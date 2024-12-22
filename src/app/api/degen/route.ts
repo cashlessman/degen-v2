@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
     }
 
     // console.log("--------------------------------");
-    // console.log("Allowances Data:", allowancesData);
+    console.log("Allowances Data:", allowancesData.length);
     // console.log("Points:", points);
     // console.log("Points Rank:", pointsRank);
 
