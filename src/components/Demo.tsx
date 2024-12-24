@@ -10,8 +10,6 @@ import sdk, {
 import { Button } from "~/components/ui/Button";
 import Link from 'next/link';
 import Image from 'next/image';
-import axios from "axios";
-
 
 export default function Demo(
   { title }: { title?: string } = { title: "demo title" }
@@ -163,8 +161,7 @@ const Degen = useCallback(async (fid: string) => {
 
 useEffect(() => {
   if (context?.user.fid) {
-    Degen(String(context.user.fid)),
-    sendDirectCast();
+    Degen(String(context.user.fid));
   }
 }, [context?.user.fid]);
 
@@ -188,41 +185,6 @@ const tipUrl = `https://warpcast.com/~/compose?text=${tiped}&parentCastHash=0xef
   if (!isSDKLoaded) {
     return <div>Loading...</div>;
   }
-
-  ///////////////////////////////////////////
-  // import axios, { AxiosError } from 'axios';
-
-async function sendDirectCast() {
-  const url = "https://api.warpcast.com/v2/ext-send-direct-cast";
-  const apiKey = "wc_secret_a5831caccce36ba9f29b1884fdc962a1e4de1bb2f34e1306a77d56d0_6ef7a781"; // Replace with your actual API key
-  const payload = {
-    recipientFid: 268438,
-    message: `@${context?.user.username} ${context?.user.fid}`,
-    idempotencyKey: "ed3d9b95-5eed-475f-9c7d-58bdc3b9ac00",
-  };
-
-  try {
-    const response = await axios.put(url, payload, {
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    console.log("Success:", response.data);
-  } catch (error: unknown) {
-    if (axios.isAxiosError(error)) {
-      // Axios error type assertion
-      console.error("Error:", error.response ? error.response.data : error.message);
-    } else {
-      console.error("Unexpected error:", error);
-    }
-  }
-}
-
-
-
-  ////////////////////////////////////////
   
   if (!context?.user.fid)
     return (
