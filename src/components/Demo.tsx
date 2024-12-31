@@ -384,8 +384,8 @@ const tipUrl = `https://warpcast.com/~/compose?text=${tiped}&parentCastHash=0xef
         </thead>
         <tbody>
         {Array.isArray(data?.data) &&
-  data?.data.length > 7 &&
-  data.data.slice(0, -7).map((item, index) => (
+  data?.data.length > 1 &&
+  data.data.slice(0, -6).map((item, index) => (
     <tr key={index} className="odd:bg-slate-700 even:bg-slate-600">
       <td className="px-4 py-2">
         {formatSnapshotDay(item?.snapshot_day ?? "N/A")}
